@@ -27,10 +27,11 @@ next_month = data['default.payment.next.month'].value_counts()
 print(next_month)
 
 df = pd.DataFrame({'default.payment.next.month': next_month.index, 'values': next_month.values})
-# plt.rcParams['font.sans-serif']=['SimHei'] 
-# plt.rcParams['font.family']='sans-serif'
+plt.rcParams['font.sans-serif']=['SimHei'] # 设置加载的字体名
+plt.rcParams['axes.unicode_minus']=False   #解决保存图像是负号'-'显示为方块的问题
+
 plt.figure(figsize=(6, 6))
-# plt.title('信用卡违约率客户\n (违约：1，守约：0)')
+plt.title('信用卡违约率客户\n (违约：1，守约：0)')
 sns.set_color_codes('pastel')
 sns.barplot(x='default.payment.next.month', y="values", data=df)
 locs, labels = plt.xticks()
